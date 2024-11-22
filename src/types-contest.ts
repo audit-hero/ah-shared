@@ -8,7 +8,9 @@ export const ALL_PLATFORMS = [
   "hats",
   "cantina",
   "immunefi",
+  "hackenproof",
 ]
+
 export type PlatformTuple = typeof ALL_PLATFORMS
 export type Platform = PlatformTuple[number]
 

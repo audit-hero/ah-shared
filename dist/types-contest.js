@@ -5,6 +5,7 @@ export const ALL_PLATFORMS = [
     "hats",
     "cantina",
     "immunefi",
+    "hackenproof",
 ];
 export const ALL_TAGS = [
     "none",
