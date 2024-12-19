@@ -14,6 +14,10 @@
       "import": "./dist/fetch/index.js",
       "types": "./dist/fetch/index.d.ts"
     },
+    "./lambda": {
+      "import": "./dist/lambda/lambda-invoke.js",
+      "types": "./dist/lambda/lambda-invoke.d.ts"
+    },
     ".": {
       "import": "./dist/index.js",
       "types": "./dist/index.d.ts"
