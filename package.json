@@ -25,13 +25,25 @@
     "test": "yarn vitest run"
   },
   "devDependencies": {
+    "@aws-sdk/client-lambda": "^3.714.0",
+    "@aws-sdk/util-utf8-node": "^3.259.0",
+    "@types/aws-lambda": "^8.10.137",
     "@types/node": "^20.11.16",
+    "chalk": "^5.4.0",
+    "fp-ts": "^2.16.9",
+    "logging-ts": "^0.3.4",
+    "ti-fptsu": "tonisives/ti-fptsu#0e9a01174d35b65a1069a87b7d3c4701b7b768bb",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3",
     "vitest": "^2.1.2"
   },
   "dependencies": {
-    "@types/aws-lambda": "^8.10.137",
     "text-splitter": "tonisives/text-splitter#commit=c44985757b5aaa7f262041a55dfccd49e300db58"
-  }
+  },
+  "peerDependencies": {
+    "@aws-sdk/client-lambda": "*",
+    "@aws-sdk/util-utf8-node": "*",
+    "ti-fptsu": "*"
+  },
+  "packageManager": "yarn@4.5.3"
 }
