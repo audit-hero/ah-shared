@@ -12,7 +12,7 @@ import { TE } from "ti-fptsu/lib";
 type LambdaStyle = "Default" | "WithBody";
 export type LambdaInvokeProps = {
     arn: string;
-    style: LambdaStyle;
+    style?: LambdaStyle;
     payload: {
         httpMethod?: "POST" | "GET";
         body?: object;

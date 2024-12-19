@@ -12,7 +12,7 @@ const client = new LambdaClient({});
  */
 export const invokeLambdaTE = (payLoad) => pipe(new InvokeCommand({
     FunctionName: payLoad.arn,
-    Payload: getPayload(payLoad.style, payLoad.payload),
+    Payload: getPayload(payLoad.style ?? "Default", payLoad.payload),
 }), (it) => TE.tryCatch(() => client.send(it), E.toError), TE.map((it) => toUtf8(it.Payload)), TE.chain(fromApiEitherTE), TE.map((it) => it));
 let getPayload = (style, payload) => {
     if (style === "WithBody") {
@@ -30,7 +30,7 @@ let getPayload = (style, payload) => {
  */
 export let invokeLambda = (payLoad) => pipe(new InvokeCommand({
     FunctionName: payLoad.arn,
-    Payload: getPayload(payLoad.style, payLoad.payload),
+    Payload: getPayload(payLoad.style ?? "Default", payLoad.payload),
 }), (it) => TE.tryCatch(() => client.send(it), E.toError), TE.map((it) => toUtf8(it.Payload)), TE.toUnion, (it) => {
     if (it instanceof Error) {
         throw it;

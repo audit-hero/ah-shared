@@ -19,7 +19,7 @@ type LambdaStyle = "Default" | "WithBody"
 
 export type LambdaInvokeProps = {
   arn: string
-  style: LambdaStyle
+  style?: LambdaStyle
   payload: {
     httpMethod?: "POST" | "GET"
     body?: object
@@ -39,7 +39,7 @@ export const invokeLambdaTE = <T>(payLoad: LambdaInvokeProps): TE.TaskEither<Err
   pipe(
     new InvokeCommand({
       FunctionName: payLoad.arn,
-      Payload: getPayload(payLoad.style, payLoad.payload),
+      Payload: getPayload(payLoad.style ?? "Default", payLoad.payload),
     }),
     (it) => TE.tryCatch(() => client.send(it), E.toError),
     TE.map((it) => toUtf8(it.Payload as Uint8Array)),
@@ -67,7 +67,7 @@ export let invokeLambda = (payLoad: LambdaInvokeProps): Promise<string | Error> 
   pipe(
     new InvokeCommand({
       FunctionName: payLoad.arn,
-      Payload: getPayload(payLoad.style, payLoad.payload),
+      Payload: getPayload(payLoad.style ?? "Default", payLoad.payload),
     }),
     (it) => TE.tryCatch(() => client.send(it), E.toError),
     TE.map((it) => toUtf8(it.Payload as Uint8Array)),
